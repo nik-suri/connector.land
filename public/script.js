@@ -123,15 +123,12 @@ $.get('/routing', function(res, e, xhr) {
   var connectors = JSON.parse(json)
   connectors = connectors.filter(e => !e.includes('g.feraltc.'))
 
-   $.post('/pingRoutes', {routes: connectors}, function(routeStatus) {
+   $.post('/pingRoutes', { routes: connectors }, function(routeStatus) {
      $.map(routeStatus, function(route, i) {
        const newHtml = '\
          <tr class="rank-undefined">\
            <td class="col-connectoraddress">\
            ' + route.route + '\
-           </td>\
-           <td class="col-connectorlive">\
-           ' + route.live + '\
            </td>\
          </tr>'
 
