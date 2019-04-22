@@ -45,6 +45,7 @@ class Ping {
     writer.writeUInt8(0)
     writer.writeVarOctetString(Buffer.from(clientAddress, 'ascii'))
 
+    //const start = process.hrtime();
     const result = await this.plugin.sendData(IlpPacket.serializeIlpPrepare({
       destination,
       amount: '100',
@@ -52,8 +53,12 @@ class Ping {
       expiresAt: new Date(Date.now() + 30000),
       data: writer.getBuffer()
     }))
+    //const diff = process.hrtime(start);
+    //const latency = diff[0] * 1000 + diff[1] / 1000000;
+    const parsedPacket = IlpPacket.deserializeIlpPacket(result);
 
-    const parsedPacket = IlpPacket.deserializeIlpPacket(result)
+    //return { parsedPacket, latency };
+
     if (parsedPacket.type !== IlpPacket.Type.TYPE_ILP_FULFILL) {
       console.log('parsedPacket: ', parsedPacket)
       throw new Error('Error sending ping. code=' + parsedPacket.data.code +

@@ -55,7 +55,6 @@ var config = {
     $('.about').add(this).toggleClass('on')
   })
 
-
 // Setup nicer easing function for scroll animation
 
   jQuery.easing.easeInOutQuart = function (x, t, b, c, d) {
@@ -122,111 +121,30 @@ var config = {
 $.get('/routing', function(res, e, xhr) {
   var json = xhr.responseText
   var connectors = JSON.parse(json)
-  // var connectorHtmlArray = ['<div class="section" data-id="connectors">\
-  //     <table class="connectors">\
-  //       <thead>\
-  //         <tr>\
-  //           <th class="col-connectoraddress">\
-  //             <div>\
-  //               <span>Connector Address</span>\
-  //             </div>\
-  //           </th>\
-  //           <th class="col-connectoraddress">\
-  //             <div>\
-  //               <span>Live</span>\
-  //             </div>\
-  //           </th>\
-  //         </tr>\
-  //       </thead>\
-  //       <tbody id="connector-data-table">\
-  // ']
-  // connectorHtmlArray.push('\
-  //       </tbody>\
-  //     </tbody>\
-  //   </div>')
-
-  // connectorHtml = connectorHtmlArray.join('')
-  var root = $('.content')
-  //$(connectorHtml).appendTo(root)
   connectors = connectors.filter(e => !e.includes('g.feraltc.'))
 
-  let index = 0
-  for (route in connectors) {
-    const destination = connectors[route]
-    $.post('/pingroute', {destination: destination}, function(routeStatus) {
-      const newHtml = '\
-        <tr class="rank-undefined connector-row" id="row_'+index+'">\
-          <td class="col-connectoraddress">\
-            ' + routeStatus.route + '\
-          </td>\
-          <td class="col-connectorlive">\
-          ' + routeStatus.live + '\
-          </td>\
-        </tr>\
-      '
+   $.post('/pingRoutes', {routes: connectors}, function(routeStatus) {
+     $.map(routeStatus, function(route, i) {
+       const newHtml = '\
+         <tr class="rank-undefined">\
+           <td class="col-connectoraddress">\
+           ' + route.route + '\
+           </td>\
+           <td class="col-connectorlive">\
+           ' + route.live + '\
+           </td>\
+         </tr>'
 
-      $(newHtml).appendTo('#connector-data-table')
-      // $('#row_' + index).fadeIn(3000)
-      index++
-      if (index === connectors.length -1 ) {
-        console.log('pinged last connector')
-        $('html').addClass('content-pinged')
-      }
-    })
-  }
-  
-  $('html').addClass('content-ready')
+       $(newHtml).appendTo('#connector-data-table')
+       if (i === connectors.length - 1) {
+         console.log("pinged last connector");
+         $('html').addClass('content-pinged');
+       }
+     })
 
-  nav(root)
-
-  // console.log('html array: ', connectorHtmlArray)
-  // $.post('/pingRoutes', {routes: connectors}, function(routeStatus) {
-  //   var connectorHtmlArray = ['<div class="section" data-id="connectors">\
-  //         <table class="connectors">\
-  //           <thead>\
-  //             <tr>\
-  //               <th class="col-connectoraddress">\
-  //                 <div>\
-  //                   <span>Connector Address</span>\
-  //                 </div>\
-  //               </th>\
-  //               <th class="col-connectoraddress">\
-  //                 <div>\
-  //                   <span>Live</span>\
-  //                 </div>\
-  //               </th>\
-  //             </tr>\
-  //           </thead>\
-  //           <tbody>\
-  //     ']
-
-  //   $.map(routeStatus, function (route) {
-  //     connectorHtmlArray.push('    \
-  //       <tr class="rank-undefined">\
-  //         <td class="col-connectoraddress">\
-  //         ' + route.route + '\
-  //         </td>\
-  //         <td class="col-connectorlive">\
-  //         ' + route.live + '\
-  //         </td>\
-  //       </tr>\
-  //       ')
-  //   })
-
-    // connectorHtmlArray.push('\
-    //       </tbody>\
-    //     </tbody>\
-    //   </div>')
-
-  //   connectorHtml = connectorHtmlArray.join('')
-
-  //   var root = $('.content')
-
-  //   $(connectorHtml).appendTo(root)
-  //   $('html').addClass('content-ready')
-
-  //   nav(root)
-  // })
-  
+     var root = $('.content')
+     $('html').addClass('content-ready')
+     nav(root)
+   })
 })
 
