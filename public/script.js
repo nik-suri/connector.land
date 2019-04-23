@@ -1,10 +1,8 @@
-
 ///////////////////////////////////////////////////////////////////////////////
 // Config
 ///////////////////////////////////////////////////////////////////////////////
 
 var config = {
-
   // Column order to display
   columnOrder: {
     connectors: 'address network'.split(' ')
@@ -18,7 +16,6 @@ var config = {
       network: 'Network'
     }
   }
-
 }
 
 // Wait for images to load
