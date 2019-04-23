@@ -128,18 +128,30 @@ $.get('/routing', function(res, e, xhr) {
        const newHtml = '\
          <div class="card">\
            <div class="card-header connector-btn-header">\
-             <button class="btn btn-link connector-btn" type="button" data-toggle="collapse" data-target="#ping-stats-' + i + '">\
+             <button id="connector' + i + '" class="btn btn-link connector-btn"\
+               type="button" data-toggle="collapse" data-target="#ping-stats-' + i + '">\
                ' + route.route + '\
              </button>\
            </div>\
            <div id="ping-stats-' + i + '" class="collapse">\
              <div class="card-body">\
-               ' + route.stats + '\
+               ' + JSON.stringify(route.stats) + '\
              </div>\
            </div>\
          </div>'
 
        $(newHtml).appendTo('#connectors')
+
+       let status;
+       if (route.stats.loss === 0) {
+         status = "green";
+       } else if (route.stats.loss === 1) {
+         status = "red";
+       } else {
+         status = "yellow";
+       }
+       $('#connector' + i).css("color", status);
+
        if (i === connectors.length - 1) {
          console.log("pinged last connector");
          $('html').addClass('content-pinged');

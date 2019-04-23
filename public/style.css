@@ -348,6 +348,8 @@ div#connectors {
 .connector-btn {
   width: 100%;
   height: 100%;
+  margin-bottom: 0px;
+  padding: 20px;
 }
 
 .connector-btn:hover, .connector-btn:focus {
@@ -358,7 +360,7 @@ div#connectors {
 }
 
 .connector-btn-header {
-  text-align: center;
+  padding: 0px;
 }
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
