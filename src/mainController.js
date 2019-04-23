@@ -30,16 +30,11 @@ class mainController {
       ctx.body = stats
     })
 
-    router.post('/pingroutes', async ctx => {
-      let { routes } = ctx.request.body
-      let result = []
-      for (let destination in routes) {
-        const stats = await this.runPing(routes[destination], 4)
-        result.push({ route: routes[destination], stats: stats })
-        console.log('updated result: ', result)
-      }
-      ctx.body = result
-    })
+    router.post('/pingroute', async ctx => {
+      let destination = ctx.request.body.destination;
+      const stats = await this.runPing(destination, 4);
+      ctx.body = { route: destination, stats: stats };
+    });
 
     router.get('/coil/register.html', async ctx => {
       ctx.set('content-type', 'text/html')
@@ -71,7 +66,7 @@ class mainController {
     // packet stats
 		const average = (data) => data.reduce((sum, value) => sum + value, 0) / data.length;
 
-    const loss = packetError / count;
+    const loss = packetError * 1.0 / count;
 
 		const min = Math.min(...measurements);
 		const avg = average(measurements);
