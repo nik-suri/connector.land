@@ -14,6 +14,10 @@
     Styles
   - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
 
+  <link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.css">
   <link rel="stylesheet" href="style.css">
@@ -104,21 +108,7 @@
 
 <div class="content-pinging">Pinging Connectors...</div>
 <section class="content">
-  <div class="section" data-id="connectors">
-    <table class="connectors">
-      <thead>
-        <tr>
-          <th class="col-connectoraddress">
-            <div>
-              <span>Connector Address</span>
-            </div>
-          </th>
-        </tr>
-      </thead>
-      <tbody id="connector-data-table">
-      </tbody>
-    </table>
-  </div>
+  <div class="accordion" id="connectors"></div>
 </section>
 
 
@@ -126,10 +116,17 @@
 <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   Scripts
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
-
 <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+  integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+  crossorigin="anonymous"></script>
+<script
+  src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+  integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
   crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.6.1/Sortable.min.js"></script>
 <script src="vendor/thenBy.min.js"></script>

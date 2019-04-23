@@ -58,14 +58,6 @@ class Ping {
     const parsedPacket = IlpPacket.deserializeIlpPacket(result);
 
     return { parsedPacket, latency };
-
-    //if (parsedPacket.type !== IlpPacket.Type.TYPE_ILP_FULFILL) {
-      //console.log('parsedPacket: ', parsedPacket)
-      //throw new Error('Error sending ping. code=' + parsedPacket.data.code +
-        //' message=' + parsedPacket.data.message)
-    //}
-
-    //console.log('parsedPacket: ', parsedPacket)
   }
 }
 

@@ -126,13 +126,20 @@ $.get('/routing', function(res, e, xhr) {
    $.post('/pingRoutes', { routes: connectors }, function(routeStatus) {
      $.map(routeStatus, function(route, i) {
        const newHtml = '\
-         <tr class="rank-undefined">\
-           <td class="col-connectoraddress">\
-           ' + route.route + '\
-           </td>\
-         </tr>'
+         <div class="card">\
+           <div class="card-header connector-btn-header">\
+             <button class="btn btn-link connector-btn" type="button" data-toggle="collapse" data-target="#ping-stats-' + i + '">\
+               ' + route.route + '\
+             </button>\
+           </div>\
+           <div id="ping-stats-' + i + '" class="collapse">\
+             <div class="card-body">\
+               ' + route.stats + '\
+             </div>\
+           </div>\
+         </div>'
 
-       $(newHtml).appendTo('#connector-data-table')
+       $(newHtml).appendTo('#connectors')
        if (i === connectors.length - 1) {
          console.log("pinged last connector");
          $('html').addClass('content-pinged');

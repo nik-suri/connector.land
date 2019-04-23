@@ -55,7 +55,6 @@ class mainController {
 
     for (let i = 0; i < count; i++) {
       const { parsedPacket, latency } = await this.ping.ping(destination);
-      console.log(parsedPacket);
 
       if (parsedPacket.type === IlpPacket.Type.TYPE_ILP_FULFILL) {
         console.log(`ILP_FULFILL from ${destination}: time = ${latency}`);

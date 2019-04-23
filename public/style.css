@@ -15,6 +15,7 @@ body {
 
 html, body {
   overflow-x: hidden;
+  height: 100%;
 }
 
 a[href=""], a:not([href]) {
@@ -337,6 +338,28 @@ html:not(.content-pinged) .content-pinging {
 }
 
 
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+  Connector Accordion
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+div#connectors {
+  width: 100%;
+}
+
+.connector-btn {
+  width: 100%;
+  height: 100%;
+}
+
+.connector-btn:hover, .connector-btn:focus {
+  background-color: transparent;
+  border-color: transparent;
+  color: #007bff;
+  text-decoration: unset;
+}
+
+.connector-btn-header {
+  text-align: center;
+}
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
   Tables
@@ -502,6 +525,7 @@ table:not(.user-sorted) tr.rank-2 + tr:not(.rank-2) td {
 
 td a {
   color: #b881d9;
+  display: block;
 }
 
 td a:hover {
