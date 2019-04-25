@@ -1,12 +1,13 @@
 import React from 'react';
 import axios from 'axios';
-import { Collapse } from 'antd';
+import { Icon, Button } from 'antd';
 import 'antd/dist/antd.css';
+import './App.css';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { routes: [] };
+    this.state = {};
   }
 
   componentDidMount() {
@@ -26,38 +27,62 @@ class App extends React.Component {
     this.setState({ routes: routeInfos });
   }
 
+  displayConnectorStats = e => {
+    console.log(e.target);
+    this.setState({ activeConnectorStats: parseInt(e.target.name) });
+  }
+
   render() {
-    const Panel = Collapse.Panel;
     console.log(this.state);
-    const panels = this.state.routes.map((routeInfo, i) => {
+    let connectorButtons;
+    let connectorStats;
+    if (this.state.routes) {
+      connectorButtons = this.state.routes.map((routeInfo, i) => {
 
-      let status;
-      if (routeInfo.stats.loss === 0) {
-        status = "green";
-      } else if (routeInfo.stats.loss === 1) {
-        status = "red";
-      } else {
-        status = "yellow";
-      }
+        let status;
+        if (routeInfo.stats.loss === 0) {
+          status = "green";
+        } else if (routeInfo.stats.loss === 1) {
+          status = "red";
+        } else {
+          status = "yellow";
+        }
 
-      const customPanelStyle = {
-        background: status
-      };
+        return (
+          <div>
+            <Button
+              name={i}
+              onClick={this.displayConnectorStats}
+              block>
+              <Icon type="laptop"
+                style={{
+                  color: status,
+                  fontSize: '28px',
+                  float: "left"
+                }}
+              />
+              {routeInfo.route}
+            </Button>
+          </div>
+        );
+      });
 
-      return (
-        <Panel header={routeInfo.route} key={i} style={customPanelStyle}>
-          <p>{JSON.stringify(routeInfo.stats)}</p>
-        </Panel>
-      );
-    });
+      connectorStats = JSON.stringify(this.state.routes[this.state.activeConnectorStats]);
+    } else {
+      connectorButtons = <Icon type="loading" />;
+      connectorStats = '';
+    }
 
     return (
       <div>
-        <Collapse accordion>
-          {panels}
-        </Collapse>
+        <div class="connector-list">
+          {connectorButtons}
+        </div>
+        <div>
+          {connectorStats}
+        </div>
       </div>
-    )
+    );
   }
 }
 
