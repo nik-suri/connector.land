@@ -11,12 +11,12 @@ class App {
     this.index = deps(mainController)
     this.router = Router()
     this.parser = Parser()
-    this.serve = Serve(path.resolve(__dirname, '../public'))
-    this.views = Views(path.resolve(__dirname, '../public'), {
-      map: {
-        html: 'underscore'
-      }
-    })
+    this.serve = Serve(path.resolve(__dirname, '../../frontend/build'))
+    //this.views = Views(path.resolve(__dirname, '../public'), {
+      //map: {
+        //html: 'underscore'
+      //}
+    //})
 
     this.app = new Koa()
   }
@@ -26,7 +26,7 @@ class App {
 
     const server = this.app
       .use(this.parser)
-      .use(this.views)
+      //.use(this.views)
       .use(this.serve)
       .use(this.router.routes())
       .listen(6001)
