@@ -1,7 +1,22 @@
-.connector-list {
-  width: 20%;
+#connector-land-header {
+  color: #fff;
+  text-align: center;
 }
 
-.connector-btn {
-  width: 90%;
+#ILPLogo {
+  height: 50px;
+  width: auto;
+}
+
+#connector-land-sider {
+  overflow: auto;
+}
+
+#connector-land-content {
+  padding: 20px;
+}
+
+#connector-land-title {
+  padding: 10px;
+  font-size: 20px;
 }
