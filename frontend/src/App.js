@@ -38,10 +38,9 @@ class App extends React.Component {
 
   render() {
     console.log(this.state);
-    let connectors;
-    let connectorInfo;
+    let displayContent;
     if (this.state.routes) {
-      connectors = this.state.routes.map((routeInfo, i) => {
+      const connectors = this.state.routes.map((routeInfo, i) => {
 
         let status;
         if (routeInfo.stats.loss === 0) {
@@ -69,10 +68,29 @@ class App extends React.Component {
         );
       });
 
-      connectorInfo = this.state.routes[this.state.activeConnectorStats];
+      const connectorInfo = this.state.routes[this.state.activeConnectorStats];
+
+      displayContent = (
+        <Layout>
+          <Sider id="connector-land-sider" width="auto">
+            <Menu
+              mode="inline"
+              defaultSelectedKeys={['0']}
+            >
+              {connectors}
+            </Menu>
+          </Sider>
+          <Content id="connector-land-content">
+            <ConnectorContent
+              name={connectorInfo.route}
+              stats={connectorInfo.stats}
+            />
+          </Content>
+        </Layout>
+      );
+
     } else {
-      connectors = <Icon type="loading" />;
-      connectorInfo = '';
+      displayContent = <Icon type="loading" />;
     }
 
     return (
@@ -82,22 +100,7 @@ class App extends React.Component {
             <img id="ILPLogo" alt="Interledger" src={ILPLogo} />
             <span id="connector-land-title">Connector.land</span>
           </Header>
-          <Layout>
-            <Sider id="connector-land-sider" width="auto">
-              <Menu
-                mode="inline"
-                defaultSelectedKeys={['0']}
-              >
-                {connectors}
-              </Menu>
-            </Sider>
-            <Content id="connector-land-content">
-              <ConnectorContent
-                name={connectorInfo.route}
-                stats={connectorInfo.stats}
-              />
-            </Content>
-          </Layout>
+          {displayContent}
         </Layout>
       </div>
     );
