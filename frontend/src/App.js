@@ -37,7 +37,6 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state);
     let displayContent;
     if (this.state.routes) {
       const connectors = this.state.routes.map((routeInfo, i) => {

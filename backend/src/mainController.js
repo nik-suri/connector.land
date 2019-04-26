@@ -75,9 +75,9 @@ class mainController {
 		const diffs = measurements.map((value) => value - avg);
 		const squareDiffs = diffs.map((diff) => diff * diff);
 		const avgSquareDiff = average(squareDiffs);
-		const mdev = Math.sqrt(avgSquareDiff);
+		const stdDev = Math.sqrt(avgSquareDiff);
 
-    return { loss, min, avg, max, mdev }
+    return { loss, min, avg, max, stdDev }
   }
 }
 
