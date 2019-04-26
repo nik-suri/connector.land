@@ -1,13 +1,18 @@
 import React from 'react';
 import axios from 'axios';
-import { Layout, Menu, Icon } from 'antd';
+import {
+  Layout,
+  Menu,
+  Icon
+} from 'antd';
 import 'antd/dist/antd.css';
 import './App.css';
 import ILPLogo from './logo.png';
 import ConnectorContent from './ConnectorContent';
+import About from './About';
 
 const {
-  Header, Content, Footer, Sider,
+  Header, Content, Sider,
 } = Layout;
 
 class App extends React.Component {
@@ -98,6 +103,7 @@ class App extends React.Component {
           <Header id="connector-land-header">
             <img id="ILPLogo" alt="Interledger" src={ILPLogo} />
             <span id="connector-land-title">Connector.land</span>
+            <About />
           </Header>
           {displayContent}
         </Layout>

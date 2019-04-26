@@ -1,12 +1,9 @@
 import React from 'react';
 import { Table, PageHeader } from 'antd';
 import 'antd/dist/antd.css';
+import './ConnectorContent.css';
 
 class ConnectorContent extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const columns = [{
       title: 'Ping stat',
