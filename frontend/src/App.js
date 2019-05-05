@@ -28,13 +28,14 @@ class App extends React.Component {
   async loadConnectors() {
     const promise = await axios.get('/routing');
     const connectors = promise.data.filter(e => !e.includes('g.feraltc.'));
-    const routeInfos = await Promise.all(connectors.map(async (destination) => {
+    const routes = await Promise.all(connectors.map(async (destination) => {
       const promise = await axios.post('/pingroute', {
-        destination: destination
+        destination: destination,
+        numPing: 4
       });
       return promise.data;
     }));
-    this.setState({ routes: routeInfos });
+    this.setState({ routes: routes });
   }
 
   displayConnectorStats = item => {

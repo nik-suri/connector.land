@@ -31,8 +31,8 @@ class mainController {
     })
 
     router.post('/pingroute', async ctx => {
-      let destination = ctx.request.body.destination;
-      const stats = await this.runPing(destination, 4);
+      const { destination, numPing } = ctx.request.body;
+      const stats = await this.runPing(destination, numPing);
       ctx.body = { route: destination, stats: stats };
     });
 

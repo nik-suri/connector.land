@@ -11,6 +11,7 @@
 #connector-land-sider {
   overflow: auto;
   background: #fff;
+  height: 100vh;
 }
 
 #connector-land-content {
