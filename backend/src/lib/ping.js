@@ -48,7 +48,7 @@ class Ping {
     const start = process.hrtime();
     const result = await this.plugin.sendData(IlpPacket.serializeIlpPrepare({
       destination,
-      amount: '100',
+      amount: '1',
       executionCondition: condition,
       expiresAt: new Date(Date.now() + 30000),
       data: writer.getBuffer()
