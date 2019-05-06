@@ -1,10 +1,15 @@
-# https://connector.land
+#Vish
 
-To run the koa server:
+To use:
 
 ```sh
+git clone https://github.com/nik-suri/vish.git
+cd frontend
 npm install
-node src/index.js
+npm run build
+cd ../backend
+npm install
+npm start
 ```
 
-connector.land requires a live connector from which to acquire routing data. Currently it does SSH port forwarding on some of the exposed Admin APIs of a Tier 1 Connector.
+Vish requires a live connector from which to acquire routing data. This connector can either be local to the koa web server or have its Admin APIs port forwarded to the machine local to the running server.

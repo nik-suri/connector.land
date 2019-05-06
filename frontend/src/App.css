@@ -1,4 +1,4 @@
-#connector-land-header {
+#vish-header {
   color: #fff;
   text-align: center;
 }
@@ -8,17 +8,17 @@
   width: auto;
 }
 
-#connector-land-sider {
+#vish-sider {
   overflow: auto;
   background: #fff;
   height: 100vh;
 }
 
-#connector-land-content {
+#vish-content {
   padding: 20px;
 }
 
-#connector-land-title {
+#vish-title {
   padding: 10px;
   font-size: 20px;
 }

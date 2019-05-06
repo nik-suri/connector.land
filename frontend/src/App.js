@@ -77,7 +77,7 @@ class App extends React.Component {
 
       displayContent = (
         <Layout>
-          <Sider id="connector-land-sider" width="auto">
+          <Sider id="vish-sider" width="auto">
             <Menu
               mode="inline"
               defaultSelectedKeys={['0']}
@@ -85,7 +85,7 @@ class App extends React.Component {
               {connectors}
             </Menu>
           </Sider>
-          <Content id="connector-land-content">
+          <Content id="vish-content">
             <ConnectorContent
               name={connectorInfo.route}
               stats={connectorInfo.stats}
@@ -101,9 +101,9 @@ class App extends React.Component {
     return (
       <div>
         <Layout>
-          <Header id="connector-land-header">
+          <Header id="vish-header">
             <img id="ILPLogo" alt="Interledger" src={ILPLogo} />
-            <span id="connector-land-title">Connector.land</span>
+            <span id="vish-title">Vish</span>
             <About />
           </Header>
           {displayContent}

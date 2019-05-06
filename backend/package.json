@@ -1,21 +1,21 @@
 {
-  "name": "connector.land",
-  "version": "2.0.0",
-  "description": "The server running on https://connector.land",
+  "name": "vish",
+  "version": "1.0.0",
+  "description": "Monitoring the ILP Network",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/index.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/interledger/connector.land.git"
+    "url": "https://github.com/nik-suri/vish"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/interledger/connector.land/issues"
+    "url": "https://github.com/nik-suri/vish/issues"
   },
-  "homepage": "https://github.com/interledger/connector.land#readme",
+  "homepage": "https://github.com/nik-suri/vish#readme",
   "dependencies": {
     "crypto": "^1.0.1",
     "ilp-packet": "^2.2.0",
