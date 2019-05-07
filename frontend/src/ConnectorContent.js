@@ -39,10 +39,10 @@ class ConnectorContent extends React.Component {
           className="connector-content-title"
           title={this.props.address}
         />
-        <Table dataSource={dataSource} columns={columns} />
-        <Steps>
+        <Steps className="connector-route-steps">
           {path}
         </Steps>
+        <Table dataSource={dataSource} columns={columns} />
       </div>
     );
   }
