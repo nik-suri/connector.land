@@ -30,7 +30,7 @@ class ConnectorContent extends React.Component {
     });
 
     const path = this.props.path.map(address => (
-      <Step title={address} />
+      <Step title={address} status="process" />
     ));;
 
     return (
@@ -40,7 +40,7 @@ class ConnectorContent extends React.Component {
           title={this.props.address}
         />
         <Table dataSource={dataSource} columns={columns} />
-        <Steps status="finish">
+        <Steps>
           {path}
         </Steps>
       </div>
