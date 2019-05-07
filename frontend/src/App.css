@@ -1,4 +1,4 @@
-#vish-header {
+#app-header {
   color: #fff;
   text-align: center;
 }
@@ -8,17 +8,17 @@
   width: auto;
 }
 
-#vish-sider {
+#app-sider {
   overflow: auto;
   background: #fff;
   height: 100vh;
 }
 
-#vish-content {
+#app-content {
   padding: 20px;
 }
 
-#vish-title {
+#app-title {
   padding: 10px;
   font-size: 20px;
 }

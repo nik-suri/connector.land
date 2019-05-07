@@ -1,5 +1,5 @@
 {
-  "name": "vish",
+  "name": "ILP Monitor",
   "version": "1.0.0",
   "description": "Monitoring the ILP Network",
   "scripts": {
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/nik-suri/vish"
+    "url": "https://github.com/nik-suri/ilp-monitor"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nik-suri/vish/issues"
+    "url": "https://github.com/nik-suri/ilp-monitor/issues"
   },
-  "homepage": "https://github.com/nik-suri/vish#readme",
+  "homepage": "https://github.com/nik-suri/ilp-monitor#readme",
   "dependencies": {
     "crypto": "^1.0.1",
     "ilp-packet": "^2.2.0",

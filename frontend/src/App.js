@@ -77,7 +77,7 @@ class App extends React.Component {
 
       displayContent = (
         <Layout>
-          <Sider id="vish-sider" width="auto">
+          <Sider id="app-sider" width="auto">
             <Menu
               mode="inline"
               defaultSelectedKeys={['0']}
@@ -85,7 +85,7 @@ class App extends React.Component {
               {connectors}
             </Menu>
           </Sider>
-          <Content id="vish-content">
+          <Content id="app-content">
             <ConnectorContent
               name={connectorInfo.route}
               stats={connectorInfo.stats}
@@ -101,9 +101,9 @@ class App extends React.Component {
     return (
       <div>
         <Layout>
-          <Header id="vish-header">
+          <Header id="app-header">
             <img id="ILPLogo" alt="Interledger" src={ILPLogo} />
-            <span id="vish-title">Vish</span>
+            <span id="app-title">ILP Monitor</span>
             <About />
           </Header>
           {displayContent}
