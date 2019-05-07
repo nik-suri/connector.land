@@ -1,7 +1,13 @@
 import React from 'react';
-import { Table, PageHeader } from 'antd';
+import {
+  Table,
+  PageHeader,
+  Steps
+} from 'antd';
 import 'antd/dist/antd.css';
 import './ConnectorContent.css';
+
+const Step = Steps.Step;
 
 class ConnectorContent extends React.Component {
   render() {
@@ -23,13 +29,20 @@ class ConnectorContent extends React.Component {
       };
     });
 
+    const path = this.props.path.map(address => (
+      <Step title={address} />
+    ));;
+
     return (
       <div>
         <PageHeader
           className="connector-content-title"
-          title={this.props.name}
+          title={this.props.address}
         />
         <Table dataSource={dataSource} columns={columns} />
+        <Steps status="finish">
+          {path}
+        </Steps>
       </div>
     );
   }

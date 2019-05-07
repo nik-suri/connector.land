@@ -27,16 +27,19 @@ class App extends React.Component {
 
   async loadConnectors() {
     const promise = await axios.get('/routing');
-    const connectors = promise.data.filter(e => !(e.includes('g.feraltc.')
-      && e.includes('.xrpServer')
-      && e.includes('.local')));
-    const routes = await Promise.all(connectors.map(async (destination) => {
+    const connectors = promise.data;
+    const routes = await Promise.all(connectors.map(async (destinationMap) => {
       const promise = await axios.post('/pingroute', {
-        destination: destination,
+        destination: destinationMap.address,
         numPing: 4
       });
-      return promise.data;
+      return {
+        "address": promise.data.address,
+        "stats": promise.data.stats,
+        "path": destinationMap.path
+      };
     }));
+    console.log(routes);
     this.setState({ routes: routes });
   }
 
@@ -70,7 +73,7 @@ class App extends React.Component {
                 float: "left"
               }}
             />
-            <span className="nav-text">{routeInfo.route}</span>
+            <span className="nav-text">{routeInfo.address}</span>
 					</Menu.Item>
         );
       });
@@ -89,8 +92,9 @@ class App extends React.Component {
           </Sider>
           <Content id="app-content">
             <ConnectorContent
-              name={connectorInfo.route}
+              address={connectorInfo.address}
               stats={connectorInfo.stats}
+              path={connectorInfo.path}
             />
           </Content>
         </Layout>

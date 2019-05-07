@@ -17,10 +17,14 @@ class mainController {
     })
 
     router.get('/routing', async ctx => {
-      const { localRoutingTable } = await ConnectorRoutes.getRoutingTable()
+      const { forwardingRoutingTable } = await ConnectorRoutes.getRoutingTable()
       let routes = []
-      for (let route in localRoutingTable) {
-        routes = [...routes, route]
+      for (let route in forwardingRoutingTable) {
+        const routeInfo = {
+          "address": route,
+          "path": forwardingRoutingTable[route].path.split(' ')
+        };
+        routes = [...routes, routeInfo]
       }
 
       ctx.body = routes
@@ -33,7 +37,7 @@ class mainController {
     router.post('/pingroute', async ctx => {
       const { destination, numPing } = ctx.request.body;
       const stats = await this.runPing(destination, numPing);
-      ctx.body = { route: destination, stats: stats };
+      ctx.body = { address: destination, stats: stats };
     });
 
     router.get('/coil/register.html', async ctx => {
