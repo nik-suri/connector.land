@@ -50,7 +50,7 @@ class Ping {
       destination,
       amount: '1',
       executionCondition: condition,
-      expiresAt: new Date(Date.now() + 30000),
+      expiresAt: new Date(Date.now() + 10000),
       data: writer.getBuffer()
     }))
     const diff = process.hrtime(start);
