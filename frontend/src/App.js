@@ -27,7 +27,9 @@ class App extends React.Component {
 
   async loadConnectors() {
     const promise = await axios.get('/routing');
-    const connectors = promise.data.filter(e => !e.includes('g.feraltc.'));
+    const connectors = promise.data.filter(e => !(e.includes('g.feraltc.')
+      && e.includes('.xrpServer')
+      && e.includes('.local')));
     const routes = await Promise.all(connectors.map(async (destination) => {
       const promise = await axios.post('/pingroute', {
         destination: destination,
