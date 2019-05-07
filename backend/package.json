@@ -1,5 +1,5 @@
 {
-  "name": "ILP Monitor",
+  "name": "ilp-monitor",
   "version": "1.0.0",
   "description": "Monitoring the ILP Network",
   "scripts": {
